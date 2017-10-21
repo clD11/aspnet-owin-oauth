@@ -16,7 +16,6 @@ app.UseHighQAuthentication(
 	Domain = "myhq.company.com",
 	InstanceName = "myhq",
 	ApiVersion = "2",
-
 	// The path once returned from the Identity Provider					
 	RedirectUri = "/Account/ExternalLoginCallback",
      }
