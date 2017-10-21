@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Owin.Security.HighQ")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Pinsent Masons")]
+[assembly: AssemblyCompany("None")]
 [assembly: AssemblyProduct("Owin.Security.HighQ")]
-[assembly: AssemblyCopyright("Copyright © Pinsent Masons 2017")]
+[assembly: AssemblyCopyright("Copyright © None 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
