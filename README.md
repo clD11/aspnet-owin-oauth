@@ -1,6 +1,4 @@
-# ASP.Net Owin OAuth Providers 
-
-### Various Owin OAuth Providers for ASP.Net
+# ASP.Net Owin OAuth Providers
 
 **1. HighQ**
 	
