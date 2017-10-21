@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>071d1735-65d0-496b-b9ba-26ca8ec3c20f</ProjectGuid>
+    <ProjectGuid>49632d5d-2b21-4d4d-ace2-9e3f5d67691b</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Owin.Security.HighQ</RootNamespace>
