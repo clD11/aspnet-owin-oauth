@@ -47,6 +47,6 @@ namespace Authentication.Web.OWIN.HighQ
         public ICookieManager CookieManager { get; set; }
 
         public string AccessType { get; set; }
-        public string ApiVersion { get; internal set; }
+        public string ApiVersion { get; set; }
     }
 }
