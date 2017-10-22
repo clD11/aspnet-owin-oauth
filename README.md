@@ -1,6 +1,6 @@
 # ASP.Net Owin OAuth Providers
 
-**1. HighQ**
+**1. (Work in Progres) HighQ**
 	
 Set as shown in HighQ Developer community.
 During app registration set the redirect_uri to *<your_domain>*/signin-highq. 			
