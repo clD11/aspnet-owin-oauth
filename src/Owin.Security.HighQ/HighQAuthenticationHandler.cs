@@ -119,6 +119,7 @@ namespace Authentication.Web.OWIN.HighQ
 
                 context.Identity = new ClaimsIdentity(Options.AuthenticationType, ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
                 context.Identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, context.Id, ClaimValueTypes.String, Options.AuthenticationType));
+                context.Identity.AddClaim(new Claim(ClaimsIdentity.DefaultNameClaimType, context.Email, ClaimValueTypes.String, Options.AuthenticationType));
                 context.Identity.AddClaim(new Claim(ClaimTypes.GivenName, context.FirstName, ClaimValueTypes.String, Options.AuthenticationType));
                 context.Identity.AddClaim(new Claim(ClaimTypes.Surname, context.LastName, ClaimValueTypes.String, Options.AuthenticationType));
                 context.Identity.AddClaim(new Claim(ClaimTypes.Email, context.Email, ClaimValueTypes.Email, Options.AuthenticationType));
