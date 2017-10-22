@@ -12,6 +12,7 @@ using Newtonsoft.Json.Linq;
 using Authentication.Web.OWIN.HighQ.Provider;
 using System.Net.Http.Headers;
 using System.Xml;
+using System.Web;
 
 namespace Authentication.Web.OWIN.HighQ
 {
@@ -28,13 +29,15 @@ namespace Authentication.Web.OWIN.HighQ
 
         protected override async Task<AuthenticationTicket> AuthenticateCoreAsync()
         {
-            // Recreate challenge properites as HighQ dosent return state on callback...
-            AuthenticationProperties properties = new AuthenticationProperties() { RedirectUri = 
+            // Recreate challenge properites as HighQ dosent implement OAuth2 10.12 CSRF i.e. return state on callback...            
+            AuthenticationProperties properties = new AuthenticationProperties()
+            {
+                RedirectUri =
                 Request.Scheme +
                 Uri.SchemeDelimiter +
                 Request.Host +
                 Request.PathBase +
-                Options.RedirectUri
+                Options.RedirectUri // Use redirect set in AuthenticationOptions.
             };
 
             try
@@ -141,21 +144,13 @@ namespace Authentication.Web.OWIN.HighQ
 
                 if (challenge != null)
                 {
-                    AuthenticationProperties properties = challenge.Properties;
-                    
-                    // TODO implement return to current uri
-                    if (string.IsNullOrEmpty(properties.RedirectUri))
-                    {
-                        properties.RedirectUri = Request.Uri.ToString();
-                    }
-
                     string requestPrefix = Request.Scheme + "://" + Request.Host;
                     string redirectUri = requestPrefix + Request.PathBase + Options.CallbackPath;
 
-                    var authorizationEndpoint = string.Format(Constants.AuthorizationEndpoint, Options.Domain, 
-                        Options.InstanceName, Options.ClientId, redirectUri);
+                    var authorizationEndpoint = string.Format(Constants.AuthorizationEndpoint, Options.Domain,
+                        Options.InstanceName, Options.ClientId, HttpUtility.UrlEncode(redirectUri));
 
-                    var redirectContext = new HighQApplyRedirectContext(Context, Options, properties, authorizationEndpoint);
+                    var redirectContext = new HighQApplyRedirectContext(Context, Options, challenge.Properties, authorizationEndpoint);
                     Options.Provider.ApplyRedirect(redirectContext);
                 }
             }
